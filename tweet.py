@@ -30,30 +30,33 @@ def make_sentence(dic):
     tweets_list.append(ret)
     return "".join(ret)
 
-
-while True:#一文のみ
-    s = make_sentence(dic)
-    if len(s) < 140:
-        break
-
-table = str.maketrans({
-                      '。': '(2016 夏)',
-                      })
-s = s.translate(table)
+def natsunoomoide(s):
+    table = str.maketrans({
+                          '。': '(2016 夏)',
+                          })
+    s = s.translate(table)
+    return s
 
 #文章をツイート
 import twitter
+def puttweet_now():
+    while True:#一文のみ
+        s = make_sentence(dic)
+        if len(s) < 140:
+            break
 
-auth = twitter.OAuth(consumer_key="O1iiUPGO486AcOAFFAVHMYWzf",
-consumer_secret="BoNVzXxbccEgtIl167b6DlrreEkFm2NaVheQCpOhE90X8aYmvw",
-token="1011200951057649664-qApVJyG0uS5wWrIgE6k2dsHhERzc6k",
-token_secret="KUn5VLZr3AGeUoFE5Npd83ovQZy0lh1sKUjgFPHpubsp6")
+    natsu = random()*100
+    if natsu < 81 and natsu > 78:
+        nastunoomoide(s)
 
-t = twitter.Twitter(auth=auth)
-
-#ツイートのみ
-status = s  #投稿するツイート
-t.statuses.update(status=status) #Twitterに投稿
+    auth = twitter.OAuth(consumer_key="O1iiUPGO486AcOAFFAVHMYWzf",
+            consumer_secret="BoNVzXxbccEgtIl167b6DlrreEkFm2NaVheQCpOhE90X8aYmvw",
+            token="1011200951057649664-qApVJyG0uS5wWrIgE6k2dsHhERzc6k",
+            token_secret="KUn5VLZr3AGeUoFE5Npd83ovQZy0lh1sKUjgFPHpubsp6")
+    t = twitter.Twitter(auth=auth)
+    #ツイートのみ
+    status = s  #投稿するツイート
+    t.statuses.update(status=status) #Twitterに投稿
 
 
 
