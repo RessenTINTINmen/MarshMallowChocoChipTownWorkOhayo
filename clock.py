@@ -3,7 +3,7 @@ import tweet
 
 twische = BlockingScheduler()
 
-@twische.scheduled_job('interval',minutes=1)
+@twische.scheduled_job('interval',minutes=15)
 def timed_job():
     tweet.puttweet_now()
 
