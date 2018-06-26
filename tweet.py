@@ -45,7 +45,7 @@ def puttweet_now():
         if len(s) < 140:
             break
 
-    natsu = randam.randam()*100
+    natsu = random.random()*100
     if natsu < 81 and natsu > 78:
         nastunoomoide(s)
 
