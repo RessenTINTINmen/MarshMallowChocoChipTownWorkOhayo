@@ -36,6 +36,10 @@ while True:#一文のみ
     if len(s) < 140:
         break
 
+table = str.maketrans({
+                      '。': '(2016 夏)',
+                      })
+s = s.translate(table)
 
 #文章をツイート
 import twitter
