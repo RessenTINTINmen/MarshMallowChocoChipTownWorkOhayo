@@ -23,9 +23,12 @@ def make_sentence(dic):
     ret.append(w1)
     ret.append(w2)
     while True:
+        flag = true
         w3 = word_choice(dic.get(w1).get(w2))
         ret.append(w3)
-        if w3 == "。": break
+        if w3 == "「": flag == false
+        if w3 == "。" and flag == true: break
+        if w3 == "」" and falg == false: break
         w1, w2 = w2, w3
     tweets_list.append(ret)
     return "".join(ret)
@@ -46,7 +49,7 @@ def puttweet_now():
             break
 
     natsu = random.randint(0, 99)
-    if natsu < 81 and natsu > 78:
+    if natsu < 99 and natsu > 76:
         nastunoomoide(s)
 
     auth = twitter.OAuth(consumer_key="O1iiUPGO486AcOAFFAVHMYWzf",
