@@ -28,7 +28,7 @@ def make_sentence(dic):
         ret.append(w3)
         if w3 == "「": flag == false
         if w3 == "。" and flag == true: break
-        if w3 == "」" and falg == false: break
+        if w3 == "」" and flag == false: break
         w1, w2 = w2, w3
     tweets_list.append(ret)
     return "".join(ret)
