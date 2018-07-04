@@ -4,6 +4,7 @@ import json
 dic = open("markov-blog.json" , "r")
 dic = json.load(dic)
 
+
 tweets_list = []
 import random
 def word_choice(sel):
@@ -23,12 +24,12 @@ def make_sentence(dic):
     ret.append(w1)
     ret.append(w2)
     while True:
-        flag = true
+        flag = 0
         w3 = word_choice(dic.get(w1).get(w2))
         ret.append(w3)
-        if w3 == "「": flag == false
-        if w3 == "。" and flag == true: break
-        if w3 == "」" and flag == false: break
+        if w3 == "「": flag == 1
+        if w3 == "。" and flag == 0: break
+        if w3 == "」" and flag == 1: break
         w1, w2 = w2, w3
     tweets_list.append(ret)
     return "".join(ret)
@@ -48,9 +49,9 @@ def puttweet_now():
         if len(s) < 140:
             break
 
+    print(s)
     natsu = random.randint(0, 99)
-    if natsu < 99 and natsu > 76:
-        nastunoomoide(s)
+    if natsu <= 99 and natsu >= 74: natsunoomoide(s)
 
     auth = twitter.OAuth(consumer_key="O1iiUPGO486AcOAFFAVHMYWzf",
             consumer_secret="BoNVzXxbccEgtIl167b6DlrreEkFm2NaVheQCpOhE90X8aYmvw",
@@ -60,7 +61,3 @@ def puttweet_now():
     #ツイートのみ
     status = s  #投稿するツイート
     t.statuses.update(status=status) #Twitterに投稿
-
-
-
-
